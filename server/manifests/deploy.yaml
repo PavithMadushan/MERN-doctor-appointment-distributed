@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: backend-service
-          image: pavithrajapaksha/backend-service
+          image: pavithrajapaksha/appoinmentservice:latest 
           envFrom:
             - configMapRef:
                 name: backend-service-configmap
