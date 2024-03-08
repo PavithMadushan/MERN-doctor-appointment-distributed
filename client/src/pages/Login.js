@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
+import { AppConfig } from "../../config";
 
 function Login() {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ function Login() {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post("/api/user/login", values);
+      const response = await axios.post(AppConfig.baseUrl + "/api/user/login", values);
       dispatch(hideLoading());
       if (response.data.success) {
         toast.success(response.data.message);
