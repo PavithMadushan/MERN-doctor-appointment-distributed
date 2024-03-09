@@ -8,6 +8,7 @@ import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DoctorForm from "../components/DoctorForm";
 import moment from "moment";
+import { AppConfig } from "../config";
 
 function BookAppointment() {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -22,7 +23,7 @@ function BookAppointment() {
   const getDoctorData = async () => {
     try {
       dispatch(showLoading());
-      const response = await axios.post(
+      const response = await axios.post( AppConfig.baseUrl + 
         "/api/doctor/get-doctor-info-by-id",
         {
           doctorId: params.doctorId,
@@ -46,7 +47,7 @@ function BookAppointment() {
   const checkAvailability = async () => {
     try {
       dispatch(showLoading());
-      const response = await axios.post(
+      const response = await axios.post(AppConfig.baseUrl + 
         "/api/user/check-booking-avilability",
         {
           doctorId: params.doctorId,
@@ -75,7 +76,7 @@ function BookAppointment() {
     setIsAvailable(false);
     try {
       dispatch(showLoading());
-      const response = await axios.post(
+      const response = await axios.post(AppConfig.baseUrl + 
         "/api/user/book-appointment",
         {
           doctorId: params.doctorId,

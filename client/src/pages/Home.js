@@ -5,6 +5,7 @@ import { Col, Row } from "antd";
 import Doctor from "../components/Doctor";
 import { useDispatch, useSelector } from "react-redux";
 import { showLoading, hideLoading } from "../redux/alertsSlice";
+import { AppConfig } from "../config";
 
 function Home() {
   
@@ -14,7 +15,7 @@ function Home() {
   const getData = async () => {
     try {
       dispatch(showLoading())
-      const response = await axios.get("/api/user/get-all-approved-doctors", {
+      const response = await axios.get(AppConfig.baseUrl + "/api/user/get-all-approved-doctors", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },

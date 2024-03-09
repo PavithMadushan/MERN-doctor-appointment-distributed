@@ -5,6 +5,7 @@ import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+import { AppConfig } from "../../config";
 
 function Userslist() {
   const [users, setUsers] = useState([]);
@@ -12,7 +13,7 @@ function Userslist() {
   const getUsersData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get("/api/admin/get-all-users", {
+      const resposne = await axios.get(AppConfig.baseUrl + "/api/admin/get-all-users", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

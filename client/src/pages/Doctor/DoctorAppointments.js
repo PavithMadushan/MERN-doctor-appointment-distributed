@@ -6,6 +6,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+import { AppConfig } from "../../config";
 
 function DoctorAppointments() {
   const [appointments, setAppointments] = useState([]);
@@ -13,7 +14,7 @@ function DoctorAppointments() {
   const getAppointmentsData = async () => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.get(
+      const resposne = await axios.get(AppConfig.baseUrl + 
         "/api/doctor/get-appointments-by-doctor-id",
         {
           headers: {
@@ -33,7 +34,7 @@ function DoctorAppointments() {
   const changeAppointmentStatus = async (record, status) => {
     try {
       dispatch(showLoading());
-      const resposne = await axios.post(
+      const resposne = await axios.post(AppConfig.baseUrl + 
         "/api/doctor/change-appointment-status",
         { appointmentId : record._id, status: status },
         {

@@ -8,6 +8,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import DoctorForm from "../components/DoctorForm";
 import moment from "moment";
+import { AppConfig } from "../config";
 
 function ApplyDoctor() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ function ApplyDoctor() {
   const onFinish = async (values) => {
     try {
       dispatch(showLoading());
-      const response = await axios.post(
+      const response = await axios.post(AppConfig.baseUrl + 
         "/api/user/apply-doctor-account",
         {
           ...values,
